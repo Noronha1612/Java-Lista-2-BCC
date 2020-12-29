@@ -52,4 +52,15 @@ public class Funcionario extends Pessoa {
                 this.getSalario() - calcularImpostoDevido()
         );
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Funcionario that = (Funcionario) o;
+
+        return Double.compare(that.salario, salario) == 0;
+    }
 }
