@@ -18,6 +18,14 @@ public class Cliente extends Pessoa {
         this.codigo = codigo;
     }
 
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public long getCodigo() {
+        return codigo;
+    }
+
     public String toString() {
         return "Cliente{" +
                 "nome='" + this.getNome() + '\'' +
