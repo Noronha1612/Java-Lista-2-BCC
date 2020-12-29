@@ -1,6 +1,7 @@
 package questao02;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Cliente extends Pessoa {
@@ -19,7 +20,7 @@ public class Cliente extends Pessoa {
     }
 
     public void setCodigo(long codigo) {
-        this.codigo = codigo;
+        if ( codigo > 0 ) this.codigo = codigo;
     }
 
     public long getCodigo() {
@@ -27,19 +28,24 @@ public class Cliente extends Pessoa {
     }
 
     public String toString() {
-        return "Cliente{" +
-                "nome='" + this.getNome() + '\'' +
-                ", dataDeNascimento=" + this.getDataDeNascimento() +
-                ", codigo=" + codigo +
-                " }";
+        if ( codigo == -1 ) return "Cliente={}";
+
+        DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return String.format("Cliente={ nome: %s, dataDeNascimento: %s, codigo: %d }",
+                this.getNome(),
+                myFormatter.format(this.getDataDeNascimento()),
+                this.getCodigo()
+        );
     }
 
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
         Cliente cliente = (Cliente) o;
-        return Objects.equals(this.getNome(), cliente.getNome()) &&
-                Objects.equals(this.getDataDeNascimento(), cliente.getDataDeNascimento()) &&
-                Objects.equals(codigo, cliente.codigo);
+
+        return codigo == cliente.codigo;
     }
 }

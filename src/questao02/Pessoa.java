@@ -1,6 +1,7 @@
 package questao02;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Pessoa {
@@ -34,17 +35,22 @@ public class Pessoa {
     }
 
     public String toString() {
-        return "Pessoa{ " +
-                "nome='" + nome + '\'' +
-                ", dataDeNascimento=" + dataDeNascimento +
-                " }";
+        if ( nome == null ) return "Pessoa={}";
+
+        DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return String.format("Pessoa={ nome: %s, dataDeNascimento: %s }",
+                this.getNome(),
+                myFormatter.format(this.getDataDeNascimento())
+        );
     }
 
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(nome, pessoa.nome) &&
-                Objects.equals(dataDeNascimento, pessoa.dataDeNascimento);
+
+        return Objects.equals(this, pessoa);
     }
 }
