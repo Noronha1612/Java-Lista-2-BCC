@@ -28,7 +28,7 @@ public class Funcionario extends Pessoa {
     }
 
     public double calcularImpostoDevido() {
-        float imposto = 0;
+        float imposto;
 
         if ( this.getSalario() <= SALARIO_TETO_IMPOSTO ) imposto = 5;
         else imposto = 7.5f;
@@ -41,7 +41,7 @@ public class Funcionario extends Pessoa {
     public String toString() {
         if ( salario == -1 ) return "Funcionario={}";
 
-        DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+        DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         return String.format("Funcionario={ nome: %s, dataDeNascimento: %s, salarioBruto: %.2f," +
                 " impostoPago: %.2f, salarioLiquido: %.2f }",
