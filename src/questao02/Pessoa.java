@@ -51,6 +51,7 @@ public class Pessoa {
 
         Pessoa pessoa = (Pessoa) o;
 
-        return Objects.equals(this, pessoa);
+        if (nome != null ? !nome.equals(pessoa.nome) : pessoa.nome != null) return false;
+        return dataDeNascimento != null ? dataDeNascimento.equals(pessoa.dataDeNascimento) : pessoa.dataDeNascimento == null;
     }
 }

@@ -36,7 +36,7 @@ public class Gerente extends Funcionario {
 
         Gerente gerente = (Gerente) o;
 
-        return Objects.equals(this, o);
+        return area != null ? area.equals(gerente.area) : gerente.area == null;
     }
 
     public String toString() {

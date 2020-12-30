@@ -3,6 +3,7 @@ package questao02;
 import com.sun.jdi.ArrayReference;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -11,6 +12,10 @@ public class RepositorioPessoas {
 
     public RepositorioPessoas() {
         pessoas = new ArrayList<>();
+    }
+
+    public ArrayList<Pessoa> getPessoas() {
+        return pessoas;
     }
 
     private long calcularIdade(LocalDate dataDeNascimento) {
@@ -33,7 +38,7 @@ public class RepositorioPessoas {
         for ( Pessoa pessoa : pessoas ) {
             long idadePessoa = calcularIdade(pessoa.getDataDeNascimento());
 
-            if ( idadePessoa > 18 ) maioresDeIdade.add(pessoa);
+            if ( idadePessoa >= 18 ) maioresDeIdade.add(pessoa);
         }
 
         return maioresDeIdade;
@@ -45,7 +50,7 @@ public class RepositorioPessoas {
         for ( Pessoa pessoa : pessoas ) {
             long idadePessoa = calcularIdade(pessoa.getDataDeNascimento());
 
-            if ( idadePessoa > 18 && pessoa instanceof Cliente ) maioresDeIdade.add((Cliente) pessoa);
+            if ( idadePessoa >= 18 && pessoa instanceof Cliente ) maioresDeIdade.add((Cliente) pessoa);
         }
 
         return maioresDeIdade;
@@ -81,4 +86,63 @@ public class RepositorioPessoas {
         return gerentes;
     }
 
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RepositorioPessoas that = (RepositorioPessoas) o;
+
+        return pessoas != null ? pessoas.equals(that.pessoas) : that.pessoas == null;
+    }
+
+    public String toString() {
+        if ( pessoas.size() == 0 ) return "Pessoas=[]";
+
+        DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        String mainString = "[\n";
+
+        for ( Pessoa pessoa : pessoas ) {
+            if ( pessoa instanceof Funcionario ) {
+                if ( (Funcionario) pessoa instanceof Gerente ) mainString = mainString + "Gerente = ";
+                else mainString = mainString + "Funcionário = ";
+            }
+            else if ( pessoa instanceof Cliente ) mainString = mainString + "Cliente = ";
+            else mainString = mainString + "Pessoa = ";
+
+            mainString = mainString + String.format("{ nome: %s, dataDeNascimento: %s",
+                    pessoa.getNome(),
+                    myFormatter.format(pessoa.getDataDeNascimento())
+            );
+
+            if ( pessoa instanceof Funcionario ) {
+                if ( (Funcionario) pessoa instanceof Gerente ) {
+                    mainString = mainString + String.format(", salarioBruto: %.2f, impostoPago: %.2f, salarioLiquido: %.2f, area: %s",
+                            ((Funcionario) pessoa).getSalario(),
+                            ((Funcionario) pessoa).calcularImpostoDevido(),
+                            ((Funcionario) pessoa).getSalario() - ((Funcionario) pessoa).calcularImpostoDevido(),
+                            ((Gerente) pessoa).getArea()
+                    );
+                } else {
+                    mainString = mainString + String.format(", salarioBruto: %.2f, impostoPago: %.2f, salarioLiquido: %.2f",
+                            ((Funcionario) pessoa).getSalario(),
+                            ((Funcionario) pessoa).calcularImpostoDevido(),
+                            ((Funcionario) pessoa).getSalario() - ((Funcionario) pessoa).calcularImpostoDevido()
+                    );
+                }
+            }
+
+            if ( pessoa instanceof Cliente ) {
+                mainString = mainString + String.format(", codigo: %d",
+                        ((Cliente) pessoa).getCodigo()
+                );
+            }
+
+            mainString = mainString + " }\n";
+        }
+
+        mainString = mainString + "]";
+
+        return mainString;
+    }
 }
