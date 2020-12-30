@@ -103,6 +103,8 @@ public class RepositorioPessoas {
         String mainString = "[\n";
 
         for ( Pessoa pessoa : pessoas ) {
+            mainString = mainString + "    ";
+
             if ( pessoa instanceof Funcionario ) {
                 if ( (Funcionario) pessoa instanceof Gerente ) mainString = mainString + "Gerente = ";
                 else mainString = mainString + "Funcionário = ";

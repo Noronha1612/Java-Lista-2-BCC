@@ -7,15 +7,8 @@ import java.util.Objects;
 public class Cliente extends Pessoa {
     private long codigo;
 
-    public Cliente() {
-        this.codigo = -1;
-        this.setDataDeNascimento(null);
-        this.setNome(null);
-    }
-
     public Cliente(String nome, LocalDate dataDeNascimento, long codigo) {
-        this.setNome(nome);
-        this.setDataDeNascimento(dataDeNascimento);
+        super(nome, dataDeNascimento);
         this.codigo = codigo;
     }
 

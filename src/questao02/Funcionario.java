@@ -7,16 +7,9 @@ public class Funcionario extends Pessoa {
     private final double SALARIO_TETO_IMPOSTO = 10000;
     private double salario;
 
-    public Funcionario() {
-        this.salario = -1;
-        this.setNome(null);
-        this.setDataDeNascimento(null);
-    }
-
     public Funcionario(String nome, LocalDate dataDeNascimento, double salario) {
+        super(nome, dataDeNascimento);
         this.salario = salario;
-        this.setNome(nome);
-        this.setDataDeNascimento(dataDeNascimento);
     }
 
     public void setSalario(double salario) {

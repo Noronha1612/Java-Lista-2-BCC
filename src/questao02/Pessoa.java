@@ -8,11 +8,6 @@ public class Pessoa {
     private String nome;
     private LocalDate dataDeNascimento;
 
-    public Pessoa() {
-        this.nome = null;
-        this.dataDeNascimento = null;
-    }
-
     public Pessoa(String nome, LocalDate dataDeNascimento) {
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;

@@ -7,17 +7,8 @@ import java.util.Objects;
 public class Gerente extends Funcionario {
     private String area;
 
-    public Gerente() {
-        this.setNome(null);
-        this.setDataDeNascimento(null);
-        this.setSalario(0);
-        this.area = null;
-    }
-
     public Gerente(String nome, LocalDate dataDeNascimento, double salario, String area) {
-        this.setNome(nome);
-        this.setDataDeNascimento(dataDeNascimento);
-        this.setSalario(salario);
+        super(nome, dataDeNascimento, salario);
         this.area = area;
     }
 

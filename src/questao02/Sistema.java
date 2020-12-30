@@ -56,10 +56,17 @@ public class Sistema {
 
         repositorioPessoas.cadastrarPessoa(funcionario3Copia);
 
-        System.out.println(repositorioPessoas.listarPessoasMaioresIdade());
-        System.out.println(repositorioPessoas.listarClienteMaioresIdade());
-        System.out.println(repositorioPessoas.listarFuncionariosComSalarioMaiorQue(3000));
-        System.out.println(repositorioPessoas.listarGerentesDaArea("Alimentos"));
+        System.out.println("Pessoas maiores de idade: " + repositorioPessoas.listarPessoasMaioresIdade());
+        System.out.println();
+        System.out.println("Clientes maiores de idade: " + repositorioPessoas.listarClienteMaioresIdade());
+        System.out.println();
+        System.out.println(String.format("Funcionários com salário maior que %d: ", 3000) + repositorioPessoas.listarFuncionariosComSalarioMaiorQue(3000));
+        System.out.println();
+        System.out.println(String.format("Gerentes da área de %s: ", "Alimentos") + repositorioPessoas.listarGerentesDaArea("Alimentos"));
+        System.out.println();
+
+        System.out.println("Repositório completo:");
+        System.out.println(repositorioPessoas);
 
     }
 }
