@@ -20,7 +20,9 @@ public class DespesaComEnergia extends Despesa {
         final int CEIL_1 = 50;
         final int CEIL_2 = 200;
 
-        double mainValue = VALUE_KWH * getkWh() + ( ((int)getkWh() / 100) * ADDITIONAL_VALUE_BY_100 );
+        double mainValue = VALUE_KWH * getkWh() + ( ((int)getkWh() / 100) * ADDITIONAL_VALUE_BY_100 ); // Standard value
+
+        // Public illumination additional tax by kWh used
         if ( getkWh() < CEIL_1 ) mainValue += ADDITIONAL_LOWEST_VALUE;
         else if ( getkWh() < CEIL_2 ) mainValue += ADDITIONAL_NORMAL_VALUE;
         else mainValue += ADDITIONAL_HIGHEST_VALUE;
