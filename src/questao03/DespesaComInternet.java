@@ -10,6 +10,7 @@ public class DespesaComInternet extends Despesa {
         setDadosTrafegados(dadosTrafegados);
     }
 
+    @Override
     public String calcularTotal() {
         final int CEIL_1 = 20;
         final int CEIL_2 = 100;
