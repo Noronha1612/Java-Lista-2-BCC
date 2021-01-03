@@ -1,5 +1,6 @@
 package questao03;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -21,15 +22,21 @@ public class FluxoCaixaTest {
         ));
 
         fluxoCaixa1.adicionarTransacao(new DespesaComInternet(
-                LocalDateTime.of(2005, 22, 8, 11, 32, 35),
+                LocalDateTime.of(2005, 12, 8, 11, 32, 35),
                 "Conta de Internet",
                 334
         ));
 
         fluxoCaixa1.adicionarTransacao(new DespesaComAgua(
-                LocalDateTime.of(2005, 22, 15, 12, 40, 5),
+                LocalDateTime.of(2005, 12, 15, 12, 40, 5),
                 "Conta de Água",
                 22
+        ));
+
+        fluxoCaixa1.adicionarTransacao(new DespesaComInternet(
+                LocalDateTime.of(2013, 8, 22, 23, 35, 5),
+                "Conta de Internet",
+                129
         ));
 
         fluxoCaixa1.adicionarTransacao(new LicencaBasica(
@@ -58,10 +65,40 @@ public class FluxoCaixaTest {
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        LocalDateTime despesaPeriodBegin = LocalDateTime.of(2002, 2, 22, 15, 5, 11);
-        LocalDateTime despesaPeriodFinish = LocalDateTime.of(2008, 9, 12, 22, 25, 21);
-        System.out.printf("Despesas entre %s e %s:\n", dateFormatter.format(despesaPeriodBegin), dateFormatter.format(despesaPeriodFinish));
+        LocalDate despesaPeriodBegin = LocalDate.of(2002, 2, 22);
+        LocalDate despesaPeriodFinish = LocalDate.of(2008, 9, 12);
+        System.out.printf("Despesas entre %s e %s: R$ %.2f\n\n",
+                dateFormatter.format(despesaPeriodBegin),
+                dateFormatter.format(despesaPeriodFinish),
+                fluxoCaixa1.calcularDespesas(despesaPeriodBegin, despesaPeriodFinish)
+        );
 
+        LocalDate receitaPeriodBegin = LocalDate.of(2006, 2, 22);
+        LocalDate receitaPeriodFinish = LocalDate.of(2015, 9, 12);
+        System.out.printf("Receitas entre %s e %s: R$ %.2f\n\n",
+                dateFormatter.format(receitaPeriodBegin),
+                dateFormatter.format(receitaPeriodFinish),
+                fluxoCaixa1.calcularReceitas(receitaPeriodBegin, receitaPeriodFinish)
+        );
+
+        System.out.printf("Percentual de receita por valor total de transações no Mes(%d) no Ano(%d): %f%%\n\n",
+                8,
+                2013,
+                fluxoCaixa1.percentualReceitasNoMes(8, 2013)
+        );
+
+        System.out.printf("Percentual de despesa por valor total de transações no Mes(%d) no Ano(%d): %f%%\n\n",
+                8,
+                2013,
+                fluxoCaixa1.percentualDespesaNoMes(8, 2013)
+        );
+
+        System.out.printf("Saldo atual de %s: R$ %.2f\n\n", fluxoCaixa1.getNomeEmpresa(), fluxoCaixa1.saldoAtual());
+
+        System.out.printf("Transações no mês %d no ano %d:\n", 8, 2013);
+        for ( Transacao transacao : fluxoCaixa1.listarTransacoesNoMes(8, 2013)) {
+            System.out.printf("%s\n", transacao.toString());
+        }
 
     }
 }

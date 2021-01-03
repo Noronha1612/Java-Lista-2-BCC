@@ -60,7 +60,7 @@ public class FluxoCaixa {
     }
 
     public double percentualReceitasNoMes(int mes, int ano) {
-        double totalValueTransitioned = getTotalValueTransitioned();
+        double totalValueTransitioned = getTotalValueTransitionedInMonth(mes, ano);
         double totalReceitaValues = 0;
 
         for ( Transacao transacao : transacoes ) {
@@ -79,7 +79,7 @@ public class FluxoCaixa {
     }
 
     public double percentualDespesaNoMes(int mes, int ano) {
-        double totalValueTransitioned = getTotalValueTransitioned();
+        double totalValueTransitioned = getTotalValueTransitionedInMonth(mes, ano);
         double totalDespesaValues = 0;
 
         for ( Transacao transacao : transacoes ) {
@@ -141,11 +141,12 @@ public class FluxoCaixa {
         return nomeEmpresa;
     }
 
-    private double getTotalValueTransitioned() {
+    private double getTotalValueTransitionedInMonth(int month, int year) {
         double value = 0;
 
         for ( Transacao transacao : transacoes ) {
-            value += Double.parseDouble(transacao.calcularTotal());
+            if ( transacao.getData().getYear() == year && transacao.getData().getMonthValue() == month )
+                value += Double.parseDouble(transacao.calcularTotal());
         }
 
         return value;

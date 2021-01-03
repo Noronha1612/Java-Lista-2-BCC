@@ -7,4 +7,5 @@ public interface Transacao {
     String getTipo();
     String getDescricao();
     String calcularTotal();
+    String toString();
 }

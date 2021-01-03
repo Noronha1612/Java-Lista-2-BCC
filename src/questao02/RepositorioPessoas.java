@@ -1,7 +1,5 @@
 package questao02;
 
-import com.sun.jdi.ArrayReference;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
