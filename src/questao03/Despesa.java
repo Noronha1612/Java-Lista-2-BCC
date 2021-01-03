@@ -1,6 +1,7 @@
 package questao03;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Despesa implements Transacao {
     private LocalDateTime data;
@@ -32,5 +33,12 @@ public abstract class Despesa implements Transacao {
     @Override
     public String getTipo() {
         return "Despesa";
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return String.format("%s = data:%s, ", getDescricao(), dateFormatter.format(getData()));
     }
 }

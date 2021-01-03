@@ -25,4 +25,9 @@ public class LicencaPlus extends Receita {
     public void setTotalContas(int totalContas) {
         this.totalContas = totalContas;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("Total de contas:%d, valor:%.2f }", getTotalContas(), Double.parseDouble(this.calcularTotal()));
+    }
 }

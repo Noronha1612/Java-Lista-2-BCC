@@ -37,4 +37,9 @@ public class DespesaComEnergia extends Despesa {
     public double getkWh() {
         return kWh;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("kWh:%f, valor:%.2f }", getkWh(), Double.parseDouble(this.calcularTotal()));
+    }
 }

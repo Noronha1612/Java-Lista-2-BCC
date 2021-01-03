@@ -30,4 +30,9 @@ public class DespesaComAgua extends Despesa {
     public double getTotalM3() {
         return totalM3;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("Total de M³:%f, valor:%.2f }", getTotalM3(), Double.parseDouble(this.calcularTotal()));
+    }
 }

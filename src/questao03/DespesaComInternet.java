@@ -34,4 +34,9 @@ public class DespesaComInternet extends Despesa {
     public double getDadosTrafegados() {
         return dadosTrafegados;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("Dados Trafegados:%f, valor:%.2f }", getDadosTrafegados(), Double.parseDouble(this.calcularTotal()));
+    }
 }
