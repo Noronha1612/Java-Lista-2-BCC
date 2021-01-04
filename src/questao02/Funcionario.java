@@ -20,6 +20,10 @@ public class Funcionario extends Pessoa {
         return salario;
     }
 
+    public double getSALARIO_TETO_IMPOSTO() {
+        return SALARIO_TETO_IMPOSTO;
+    }
+
     public double calcularImpostoDevido() {
         float imposto;
 
