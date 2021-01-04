@@ -1,8 +1,6 @@
 package questao02;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Sistema {
     public static void main(String[] args) {
@@ -54,7 +52,7 @@ public class Sistema {
 
         Gerente gerente3Copia = new Gerente("Anne", LocalDate.of(1980, 4, 18), 2250, "Alimentos");
 
-        repositorioPessoas.cadastrarPessoa(funcionario3Copia);
+        repositorioPessoas.cadastrarPessoa(gerente3Copia);
 
         System.out.println("Pessoas maiores de idade: " + repositorioPessoas.listarPessoasMaioresIdade());
         System.out.println();
