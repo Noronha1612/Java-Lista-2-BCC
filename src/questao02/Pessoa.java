@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Pessoa {
+public abstract class Pessoa {
     private String nome;
     private LocalDate dataDeNascimento;
 
