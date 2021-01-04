@@ -1,17 +1,17 @@
 package questao05.Classes;
 
 public class Produto {
-    private float valor;
+    private double valor;
     private int quantidade;
     private String descricao;
 
-    public Produto( float valor, int quantidade, String descricao ) {
+    public Produto( double valor, int quantidade, String descricao ) {
         this.valor = valor;
         this.quantidade = quantidade;
         this.descricao = descricao;
     }
 
-    public float calcularTotal() {
+    public double calcularTotal() {
         return valor * quantidade;
     }
 
@@ -23,7 +23,7 @@ public class Produto {
         return descricao;
     }
 
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
