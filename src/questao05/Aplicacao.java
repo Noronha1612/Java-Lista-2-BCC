@@ -1,14 +1,26 @@
 package questao05;
 
-import javafx.fxml.Initializable;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class Aplicacao implements Initializable {
+public class Aplicacao extends Application {
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // Todo
+    public void start(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(Aplicacao.class.getResource("FXMLQuestao04.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
