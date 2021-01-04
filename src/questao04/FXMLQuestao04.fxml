@@ -20,7 +20,7 @@
          <font>
             <Font name="SansSerif Bold" size="13.0" />
          </font></Button>
-      <Label fx:id="labelToShow" layoutX="150.0" layoutY="348.0" prefHeight="20.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="labelToShow" alignment="CENTER" layoutX="150.0" layoutY="348.0" prefHeight="20.0" prefWidth="300.0" text="label" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="SansSerif Bold" size="13.0" />
          </font>
